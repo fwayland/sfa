@@ -67,19 +67,19 @@ if draft_file and st.session_state.precedent_embeddings:
 
         from openai import OpenAI
 
-client = OpenAI()  # uses OPENAI_API_KEY env var
+        client = OpenAI()  # uses OPENAI_API_KEY env var
 
-response = client.chat.completions.create(
-    model="gpt-4",
-    messages=[{"role": "user", "content": prompt}],
-    temperature=0.2,
-)
+        response = client.chat.completions.create(
+            model="gpt-4",
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0.2,
+        )
 
-comment = response.choices[0].message.content
-    st.markdown(f"**Clause {i+1}:**")
-    st.text(clause)
-    st.markdown(f"💬 *{comment}*")
-    st.markdown("---")
+        comment = response.choices[0].message.content
+        st.markdown(f"**Clause {i+1}:**")
+        st.text(clause)
+        st.markdown(f"💬 *{comment}*")
+        st.markdown("---")
 
 elif draft_file:
     st.warning("Please upload at least one precedent first.")
