@@ -68,14 +68,18 @@ if draft_file and st.session_state.precedent_embeddings:
         from openai import OpenAI
 
         client = OpenAI()  # uses OPENAI_API_KEY env var
+        
+        try:
+            response = client.chat.completions.create(
+                model="gpt-4",
+                messages=[{"role": "user", "content": prompt}],
+                temperature=0.2,
+            )
+            comment = response.choices[0].message.content
 
-        response = client.chat.completions.create(
-            model="gpt-4",
-            messages=[{"role": "user", "content": prompt}],
-            temperature=0.2,
-        )
-
-        comment = response.choices[0].message.content
+        except Exception as e:
+            st.error(f"💥 Error from OpenAI: {e}")
+            comment = "⚠️ Could not fetch comment from GPT. See error above."
         st.markdown(f"**Clause {i+1}:**")
         st.text(clause)
         st.markdown(f"💬 *{comment}*")
