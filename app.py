@@ -65,13 +65,17 @@ if draft_file and st.session_state.precedent_embeddings:
 
         COMMENT:"""
 
-        response = openai.ChatCompletion.create(
-            model="gpt-4",
-            messages=[{"role": "user", "content": prompt}],
-            temperature=0.2,
-        )
+        from openai import OpenAI
 
-        comment = response.choices[0].message["content"]
+client = OpenAI()  # uses OPENAI_API_KEY env var
+
+response = client.chat.completions.create(
+    model="gpt-4",
+    messages=[{"role": "user", "content": prompt}],
+    temperature=0.2,
+)
+
+comment = response.choices[0].message.content
         st.markdown(f"**Clause {i+1}:**")
         st.text(clause)
         st.markdown(f"💬 *{comment}*")
