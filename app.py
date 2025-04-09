@@ -76,10 +76,10 @@ response = client.chat.completions.create(
 )
 
 comment = response.choices[0].message.content
-        st.markdown(f"**Clause {i+1}:**")
-        st.text(clause)
-        st.markdown(f"💬 *{comment}*")
-        st.markdown("---")
+    st.markdown(f"**Clause {i+1}:**")
+    st.text(clause)
+    st.markdown(f"💬 *{comment}*")
+    st.markdown("---")
 
 elif draft_file:
     st.warning("Please upload at least one precedent first.")
