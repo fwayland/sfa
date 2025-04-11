@@ -1,27 +1,22 @@
 
+# Facility Reviewer AI (Offline, ML-Upgradable)
 
-A Streamlit-based web app that:
-- Uploads Facility Agreements as precedents
-- Reviews a new draft agreement
-- Uses machine learning and ChatGPT to compare clauses
-- Adds legal comments based on differences
+This offline-capable Streamlit app:
+- Uploads many precedents over time
+- Stores & reuses precedent clauses persistently
+- Uses ML embeddings (sentence-transformers) to compare clauses
+- Can scale and evolve with more data
 
-## Setup
+## Run Locally
 
-1. Install dependencies:
-
+1. Install:
 ```
 pip install -r requirements.txt
 ```
 
-2. Set your OpenAI API key:
-
-```
-export OPENAI_API_KEY=your_key_here
-```
-
-3. Run the app:
-
+2. Start:
 ```
 streamlit run app.py
 ```
+
+Stored data is saved in `precedent_data.json`.
