@@ -1,6 +1,6 @@
 
 import streamlit as st
-from core.loaders import load_precedents, load_draft
+from core.loaders import load_draft
 from core.matcher import ClauseMatcher
 from core.storage import PersistentStore
 
