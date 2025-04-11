@@ -1,6 +1,7 @@
 
+
 streamlit
 PyPDF2
-openai>=1.0
 sentence-transformers
 faiss-cpu
+
